@@ -1,1 +1,1 @@
-/home/n0nvme/.local/share/omf/themes/bobthefish/fish_prompt.fish
+/home/n0nvme/.local/share/omf/themes/agnoster/fish_prompt.fish
