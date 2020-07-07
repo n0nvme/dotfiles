@@ -1,0 +1,3 @@
+[submodule "alacritty"]
+	path = alacritty_config
+	url = https://github.com/n0nvme/alacritty_config.git
