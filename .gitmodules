@@ -1,3 +1,6 @@
 [submodule "alacritty"]
 	path = alacritty_config
 	url = https://github.com/n0nvme/alacritty_config.git
+[submodule "awesome"]
+	path = s1mpl3
+	url = https://github.com/n0nvme/s1mpl3.git
