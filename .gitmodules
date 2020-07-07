@@ -1,0 +1,6 @@
+[submodule "awesome"]
+	path = awesome
+	url = https://github.com/n0nvme/s1mpl3.git
+[submodule "alacritty"]
+	path = alacritty
+	url = https://github.com/n0nvme/alacritty_config.git
