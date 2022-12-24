@@ -54,23 +54,13 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-#if [[ -n $TERM=="xterm-kitty" ]]; then
-#  alias ssh="kitty +kitten ssh"
-#  alias icat="kitty +kitten icat"
-#  kitty +kitten icat --align left ~/Pictures/rick_alpha_small.png
-#fi
-
-#if [ -n $SSH_CONNECTION ]; then
-#  unalias ssh
-#fi
-
 setupsolarized
 eval "$(dircolors)"
 alias ls='exa --icons'
 alias curl='curlie'
 alias docker='podman'
 alias docker-compose='podman-compose'
-
+alias vim='nvim'
 
 # Kubernetes
 alias k=kubecolor
