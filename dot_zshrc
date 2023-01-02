@@ -1,8 +1,8 @@
-POWERLEVEL9K_DIR_FOREGROUND=0
-POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=0
-POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=0
-POWERLEVEL9K_DIR_ANCHOR_BOLD=false
-POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_DIR_FOREGROUND=0
+# POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=0
+# POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=0
+# POWERLEVEL9K_DIR_ANCHOR_BOLD=false
+# POWERLEVEL9K_DISABLE_RPROMPT=true
 
 if [[ ! -f ~/.antigen/antigen.zsh ]]; then
   mkdir ~/.antigen
@@ -27,7 +27,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle b4b4r07/emoji-cli
 antigen bundle joel-porquet/zsh-dircolors-solarized.git
 # Load the theme.
-antigen theme romkatv/powerlevel10k
+# antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
@@ -93,3 +93,5 @@ if [ -f '/home/n0nvme/yandex-cloud/path.bash.inc' ]; then source '/home/n0nvme/y
 
 # The next line enables shell command completion for yc.
 if [ -f '/home/n0nvme/yandex-cloud/completion.zsh.inc' ]; then source '/home/n0nvme/yandex-cloud/completion.zsh.inc'; fi
+
+eval "$(starship init zsh)"
