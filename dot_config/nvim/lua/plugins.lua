@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
       ts_update() 
     end,
   } 
+  use 'nvim-treesitter/nvim-treesitter-context'
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -33,9 +34,11 @@ return require('packer').startup(function(use)
     }
   }
 
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
+  -- telescope
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }}
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
