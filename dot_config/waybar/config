@@ -3,7 +3,7 @@
     "spacing": 10, // Gaps between modules (4px)
     "modules-left": ["wlr/workspaces"], 
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "hyprland/language", "battery", "custom/notification", "clock"],
+    "modules-right": ["tray", "network", "cpu", "memory", "temperature", "backlight", "hyprland/language", "battery", "custom/notification", "clock"],
 
     // default modules
     "tray": {
@@ -12,14 +12,6 @@
     },
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-icons": {
-            "speaker": "",
-            "headphones": ""
-        },
-	"on-click": "pavucontrol"
     },
     "cpu": {
         "format": " {usage}%",
