@@ -76,7 +76,6 @@
 
     // wlroots modules
     "wlr/workspaces": {
-        "all-outputs": true,
 	"on-click": "activate"
     },
 
