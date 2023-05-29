@@ -1,0 +1,5 @@
+plugins = [
+    # A more explicit definition of the git install
+    { git = "https://github.com/hyprwm/hyprland-plugins", branch = "main", name = "hyprbars" },
+    "Duckonaut/split-monitor-workspaces",
+]
