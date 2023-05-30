@@ -3,7 +3,7 @@
     "spacing": 10, // Gaps between modules (4px)
     "modules-left": ["wlr/workspaces"], 
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "network", "cpu", "memory", "temperature", "backlight", "hyprland/language", "battery", "custom/notification", "clock"],
+    "modules-right": ["tray", "network", "cpu", "memory", "temperature", "hyprland/language", "battery", "custom/notification", "clock"],
 
     // default modules
     "tray": {
@@ -26,11 +26,6 @@
         "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
