@@ -84,9 +84,14 @@ source /usr/share/fzf/completion.zsh
 # Vector
 export PATH="$PATH:$HOME/.cargo/bin"
 
+# ssh-agent
+export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
+
+
 # Other
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.vector/bin:$PATH"
+
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/n0nvme/yandex-cloud/path.bash.inc' ]; then source '/home/n0nvme/yandex-cloud/path.bash.inc'; fi
