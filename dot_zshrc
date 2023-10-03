@@ -49,6 +49,11 @@ export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# inspired by https://gist.github.com/siriusjack/2722570eb5de7fee2f7a7d6f5f6c9f7b
+function sshf () {
+  ssh $(grep "Host " ~/.ssh/config | cut -b 6- | fzf --query "$LBUFFER")
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
