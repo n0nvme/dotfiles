@@ -3,7 +3,7 @@
     "spacing": 10, // Gaps between modules (4px)
     "modules-left": ["hyprland/workspaces"], 
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "network", "cpu", "memory", "temperature", "hyprland/language", "battery", "custom/notification", "clock"],
+    "modules-right": ["tray", "network", "custom/cpu", "memory", "temperature", "hyprland/language", "battery", "custom/notification", "clock"],
 
     // default modules
     "tray": {
@@ -13,8 +13,12 @@
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"
     },
-    "cpu": {
-        "format": " {usage}%",
+    "custom/cpu": {
+	"exec": "gopsuinfo -dark -c g -d 500",
+        //"exec": "echo '{\"text\": \"tmp\"}' | jq --arg txt $(gopsuinfo -dark -c g -d 500) '. + {text: $txt}'",
+	"interval": 1,
+	"format": "{}",
+	"escape": true,
     },
     "memory": {
         "format": " {}%"
