@@ -1,5 +1,21 @@
-plugins = [
-    # A more explicit definition of the git install
-    { git = "https://github.com/hyprwm/hyprland-plugins", branch = "main", name = "hyprbars" },
-    "Duckonaut/split-monitor-workspaces",
+[hyprbars]
+description = "A plugin to add title bars to windows"
+version = "1.0"
+author = "Vaxry"
+
+[hyprbars.build]
+output = "hyprbars/hyprbars.so"
+steps = [
+    "make -C hyprbars all",
+]
+
+[split-monitor-workspaces]
+description = "Split monitor workspaces"
+version = "1.0.0"
+author = "Duckonaut"
+
+[split-monitor-workspaces.build]
+output = "split-monitor-workspaces.so"
+steps = [
+    "make all",
 ]
