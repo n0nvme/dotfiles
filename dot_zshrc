@@ -61,6 +61,9 @@ function sshf () {
 
 setupsolarized
 eval "$(dircolors)"
+
+
+# Aliases
 alias ls='exa --icons'
 alias curl='curlie'
 alias docker='podman'
@@ -92,6 +95,15 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # ssh-agent
 export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
 
+# Buildx for podman
+export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
+podman() {
+  if [[ $@ == "buildx"* ]]; then
+    command /usr/lib/docker/cli-plugins/docker-buildx "${@:2}"
+  else
+    command podman "$@"
+  fi
+}
 
 # Other
 export PATH="$PATH:$HOME/.local/bin"
