@@ -108,6 +108,7 @@ podman() {
 # Other
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.vector/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
 # The next line updates PATH for Yandex Cloud CLI.
