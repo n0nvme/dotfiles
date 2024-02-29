@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 -- nvim-tree
 vim.keymap.set('n', '<C-e>', function() 
-    require('nvim-tree').focus()
+    require('nvim-tree.api').tree.focus()
 end)
 
 -- telescope
