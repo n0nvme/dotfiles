@@ -62,6 +62,18 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- neotest
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-python"
+    }
+  }
+
   -- vim-fugitive
   use {
     'tpope/vim-fugitive'
