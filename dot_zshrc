@@ -119,3 +119,4 @@ if [ -f '/home/n0nvme/yandex-cloud/completion.zsh.inc' ]; then source '/home/n0n
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(navi widget zsh)"
