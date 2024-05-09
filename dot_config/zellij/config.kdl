@@ -3,10 +3,10 @@ keybinds clear-defaults=true {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
-        bind "Ctrl w" { SwitchToMode "Locked"; }
+        bind "Ctrl ;" { SwitchToMode "Locked"; }
     }
     locked {
-        bind "Ctrl w" { SwitchToMode "Normal"; }
+        bind "Ctrl ;" { SwitchToMode "Normal"; }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
