@@ -3,3 +3,4 @@
 .config/electron24-flags.conf
 .config/electron25-flags.conf
 .config/nvim/after/
+.config/nvim/plugins.lua
