@@ -1,2 +1,1 @@
 vim.g.mapleader = " "
-

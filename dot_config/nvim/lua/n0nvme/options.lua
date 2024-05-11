@@ -6,4 +6,3 @@ vim.loader.enable()
 
 vim.g.loadednetrw = 1
 vim.g.loaded_netrwPlugin = 1
-

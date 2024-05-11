@@ -1,14 +1,15 @@
 -- all small plugins that doesn't require complex settings
 return {
   {
-    'svrana/neosolarized.nvim',
+    "svrana/neosolarized.nvim",
     dependencies = {
-      'tjdevries/colorbuddy.nvim',
+      "tjdevries/colorbuddy.nvim",
     },
     config = function()
-      require('neosolarized').setup({
-      background_set = false})
-    end
+      require("neosolarized").setup({
+        background_set = false,
+      })
+    end,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -20,16 +21,16 @@ return {
     },
     config = function()
       require("neo-tree").setup({
-	filesystem = {
-	  filtered_items = {
+        filesystem = {
+          filtered_items = {
             hide_dotfiles = false,
-          }
-	}
+          },
+        },
       })
       vim.keymap.set("n", "<C-e>", ":Neotree<CR>")
-    end
+    end,
   },
-  'tpope/vim-fugitive',
-  'gleam-lang/gleam.vim',
-  'dstein64/vim-startuptime'
+  "tpope/vim-fugitive",
+  "gleam-lang/gleam.vim",
+  "dstein64/vim-startuptime",
 }
