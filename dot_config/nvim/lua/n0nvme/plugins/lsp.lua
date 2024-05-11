@@ -42,8 +42,11 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = {"pyright"},
+      ensure_installed = {"pyright", "gopls"},
       handlers = {
+	gopls = function()
+	  require("lspconfig").gopls.setup({})
+	end,
 	pyright = function()
 	  require("lspconfig").pyright.setup({
 	    before_init = function(_, config)
