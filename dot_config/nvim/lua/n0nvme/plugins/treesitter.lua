@@ -14,6 +14,7 @@ return {
           "typescript",
           "markdown",
           "gleam",
+          "hyprlang",
         },
 
         sync_install = false,
@@ -22,6 +23,9 @@ return {
           enable = true,
           additional_vim_regex_highlighting = false,
         },
+      })
+      vim.filetype.add({
+        pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
       })
     end,
   },
