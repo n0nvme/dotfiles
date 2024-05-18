@@ -39,6 +39,12 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
   "gleam-lang/gleam.vim",
   "dstein64/vim-startuptime",
 }
