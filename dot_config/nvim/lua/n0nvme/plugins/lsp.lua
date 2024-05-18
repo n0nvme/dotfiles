@@ -62,7 +62,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "gopls" },
+      ensure_installed = { "pyright", "gopls", "ansiblels" },
       handlers = {
         gopls = function()
           require("lspconfig").gopls.setup({})
@@ -73,6 +73,9 @@ return {
               config.settings.python.pythonPath = get_python_path(config.root_dir)
             end,
           })
+        end,
+        ansiblels = function()
+          require("lspconfig").ansiblels.setup({})
         end,
       },
     })
