@@ -30,7 +30,15 @@ return {
       vim.keymap.set("n", "<C-e>", ":Neotree<CR>")
     end,
   },
-  "tpope/vim-fugitive",
+  {
+  'stevearc/aerial.nvim',
+  opts = {},
+  -- Optional dependencies
+  dependencies = {
+     "nvim-treesitter/nvim-treesitter",
+     "nvim-tree/nvim-web-devicons"
+    },
+  },
   "gleam-lang/gleam.vim",
   "dstein64/vim-startuptime",
 }
