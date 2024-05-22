@@ -10,6 +10,9 @@ return {
     vim.keymap.set("n", "gd", function()
       vim.lsp.buf.definition()
     end, opts)
+    vim.keymap.set("n", "gr", function()
+      vim.lsp.buf.references()
+    end, opts)
     vim.keymap.set("n", "K", function()
       vim.lsp.buf.hover()
     end, opts)
@@ -20,16 +23,13 @@ return {
       vim.diagnostic.open_float()
     end, opts)
     vim.keymap.set("n", "[d", function()
-      vim.diagnostic.goto_next()
+      vim.diagnostic.goto_prev()
     end, opts)
     vim.keymap.set("n", "]d", function()
-      vim.diagnostic.goto_prev()
+      vim.diagnostic.goto_next()
     end, opts)
     vim.keymap.set("n", "<leader>vca", function()
       vim.lsp.buf.code_action()
-    end, opts)
-    vim.keymap.set("n", "<leader>gr", function()
-      vim.lsp.buf.references()
     end, opts)
     vim.keymap.set("n", "<leader>vrn", function()
       vim.lsp.buf.rename()
@@ -62,13 +62,20 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "gopls", "ansiblels" },
+      ensure_installed = { "pyright", "ruff_lsp", "gopls", "ansiblels" },
       handlers = {
         gopls = function()
           require("lspconfig").gopls.setup({})
         end,
         pyright = function()
           require("lspconfig").pyright.setup({
+            before_init = function(_, config)
+              config.settings.python.pythonPath = get_python_path(config.root_dir)
+            end,
+          })
+        end,
+        ruff_lsp = function()
+          require("lspconfig").ruff_lsp.setup({
             before_init = function(_, config)
               config.settings.python.pythonPath = get_python_path(config.root_dir)
             end,
