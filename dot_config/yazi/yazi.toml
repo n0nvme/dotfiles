@@ -1,0 +1,4 @@
+[[plugin.prepend_previewers]]
+mime = "audio/*"
+exec = "exifaudio"
+
