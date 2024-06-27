@@ -77,7 +77,7 @@ return {
         ruff_lsp = function()
           require("lspconfig").ruff_lsp.setup({
             before_init = function(_, config)
-              config.settings.python.pythonPath = get_python_path(config.root_dir)
+              config.settings.interpreter = get_python_path(config.root_dir)
             end,
           })
         end,
