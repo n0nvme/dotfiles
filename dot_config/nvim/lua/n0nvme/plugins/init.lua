@@ -1,16 +1,14 @@
 -- all small plugins that doesn't require complex settings
 return {
   {
-    "Tsuzat/NeoSolarized.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "svrana/neosolarized.nvim",
+    dependencies = {
+      "tjdevries/colorbuddy.nvim",
+    },
     config = function()
-      require("NeoSolarized").setup({
-        styles = {
-          functions = { bold = false },
-        },
+      require("neosolarized").setup({
+        background_set = false,
       })
-      vim.cmd([[ colorscheme NeoSolarized ]])
     end,
   },
   {
