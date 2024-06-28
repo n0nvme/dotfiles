@@ -18,7 +18,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", "black" },
+      python = { "ruff_fix", "ruff_format" },
       javascript = { { "prettierd", "prettier" } },
     },
     -- Set up format-on-save
