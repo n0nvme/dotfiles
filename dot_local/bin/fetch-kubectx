@@ -3,7 +3,6 @@
 echo -n "where to connect?: "
 read HOST
 ADDR=${HOST#*@}
-echo $ADDR
 echo -n "cluster name: "
 read NAME
 CFG=$(ssh $HOST sudo cat /etc/rancher/k3s/k3s.yaml)
