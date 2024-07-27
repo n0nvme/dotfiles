@@ -1,0 +1,8 @@
+/* vim: set syntax=navi : */
+% argocd
+
+# add cluster to argocd
+argocd cluster add <context> --name <name>
+
+$ context: kubectl config get-contexts -o name
+

@@ -1,0 +1,8 @@
+/* vim: set syntax=navi : */
+% yay
+
+# search for package to install
+yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
+
+# search for package to remove
+pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns

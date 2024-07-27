@@ -1,0 +1,14 @@
+/* vim: set syntax=navi : */
+% taskwarrior
+
+# new task in some project
+task add "<name>" project:<project>
+
+$ project: task projects | awk '{print $1}' | sed "s/(none)//g" | tail +4 | head -n -2
+
+
+# add tag to existing task
+task <task_id> modify +<tag>
+
+$ task_id: task list | tail +4 | head -n -2  --- --column 1
+$ tag: task tags | tail +4 | head -n -2 | awk '{print $1}'
