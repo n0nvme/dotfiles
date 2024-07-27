@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+
+echo -n "where to connect?: "
+read HOST
+ADDR=${HOST#*@}
+echo $ADDR
+echo -n "cluster name: "
+read NAME
+CFG=$(ssh $HOST sudo cat /etc/rancher/k3s/k3s.yaml)
+echo $CFG | \
+  yq -y "
+  .clusters[0].cluster.server = \"https://$ADDR:6443\" |
+  .clusters[0].name = \"$NAME\" |
+  .users[0].name = \"$NAME\" |
+  .contexts[0].context.cluster = \"$NAME\" | .contexts[0].context.user = \"$NAME\"
+  " | \
+  kubecm add --context-name $NAME -c -f -
+
