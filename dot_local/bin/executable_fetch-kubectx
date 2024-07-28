@@ -3,10 +3,15 @@
 echo -n "where to connect?: "
 read HOST
 ADDR=${HOST#*@}
-echo -n "cluster name: "
+echo -n "sudo password:"
+read -s SUDO_PASS
+echo -n "\ncluster name: "
 read NAME
-CFG=$(ssh $HOST sudo cat /etc/rancher/k3s/k3s.yaml)
+CFG=$(echo $SUDO_PASS | ssh -tt $HOST "sudo -S cat /etc/rancher/k3s/k3s.yaml")
+echo ""
+echo $CFG | tail -n +3
 echo $CFG | \
+  tail -n +3 | \
   yq -y "
   .clusters[0].cluster.server = \"https://$ADDR:6443\" |
   .clusters[0].name = \"$NAME\" |
