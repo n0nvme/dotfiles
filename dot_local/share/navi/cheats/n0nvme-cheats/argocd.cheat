@@ -6,3 +6,5 @@ argocd cluster add <context> --name <name>
 
 $ context: kubectl config get-contexts -o name
 
+# search and describe app
+argocd app list --grpc-web | tail +2 | awk '{print $1}' | fzf --multi --preview 'argocd app get {1} --grpc-web'
