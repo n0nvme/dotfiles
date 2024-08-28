@@ -1,0 +1,14 @@
+[Unit]
+Description=A neat notification daemon
+Documentation=https://github.com/misterdanb/avizo
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/avizo-service
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
+
