@@ -20,6 +20,8 @@ return {
       lua = { "stylua" },
       python = { "ruff_fix", "ruff_format" },
       javascript = { { "prettierd", "prettier" } },
+      json = { { "prettierd", "prettier" } },
+      css = { { "prettierd", "prettier" } },
     },
     -- Set up format-on-save
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
