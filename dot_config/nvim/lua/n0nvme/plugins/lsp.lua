@@ -58,7 +58,6 @@ return {
       -- Fallback to system Python.
       return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
     end
-    -- print("fuck it all!!")
 
     require("mason").setup()
     require("mason-lspconfig").setup({
