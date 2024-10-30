@@ -22,6 +22,7 @@ return {
       javascript = { { "prettierd", "prettier" } },
       json = { { "prettierd", "prettier" } },
       css = { { "prettierd", "prettier" } },
+      go = { "goimports", "gofmt" },
     },
     -- Set up format-on-save
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
