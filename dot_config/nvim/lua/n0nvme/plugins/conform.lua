@@ -20,6 +20,7 @@ return {
       lua = { "stylua" },
       python = { "ruff_fix", "ruff_format" },
       javascript = { { "prettierd", "prettier" } },
+      typescript = { { "prettierd", "prettier" } },
       json = { { "prettierd", "prettier" } },
       css = { { "prettierd", "prettier" } },
       go = { "goimports", "gofmt" },
