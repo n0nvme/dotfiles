@@ -19,10 +19,11 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff_fix", "ruff_format" },
-      javascript = { { "prettierd", "prettier" } },
-      typescript = { { "prettierd", "prettier" } },
-      json = { { "prettierd", "prettier" } },
-      css = { { "prettierd", "prettier" } },
+      javascript = { "prettierd", "prettier", stop_after_first = true },
+      typescript = { "prettierd", "prettier", stop_after_first = true },
+      json = { "prettierd", "prettier", stop_after_first = true },
+      css = { "prettierd", "prettier", stop_after_first = true },
+      html = { "prettierd", "prettier", stop_after_first = true },
       go = { "goimports", "gofmt" },
     },
     -- Set up format-on-save
