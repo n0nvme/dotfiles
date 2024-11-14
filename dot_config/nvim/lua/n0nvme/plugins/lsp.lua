@@ -61,7 +61,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "ruff_lsp", "gopls", "ansiblels" },
+      ensure_installed = { "pyright", "ruff", "gopls", "ansiblels" },
       handlers = {
         gopls = function()
           require("lspconfig").gopls.setup({})
@@ -73,8 +73,8 @@ return {
             end,
           })
         end,
-        ruff_lsp = function()
-          require("lspconfig").ruff_lsp.setup({
+        ruff = function()
+          require("lspconfig").ruff.setup({
             before_init = function(_, config)
               config.settings.interpreter = get_python_path(config.root_dir)
             end,
