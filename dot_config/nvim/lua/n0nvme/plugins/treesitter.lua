@@ -15,6 +15,8 @@ return {
           "markdown",
           "gleam",
           "hyprlang",
+          "helm",
+          "gotmpl",
         },
 
         sync_install = false,
@@ -26,6 +28,17 @@ return {
       })
       vim.filetype.add({
         pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+      })
+      vim.filetype.add({
+        extension = {
+          gotmpl = "gotmpl",
+          gotmplhtml = "gotmpl",
+        },
+        pattern = {
+          [".*/templates/.*%.tpl"] = "helm",
+          [".*/templates/.*%.tmpl.html"] = "helm",
+          [".*/templates/.*%.ya?ml"] = "helm",
+        },
       })
     end,
   },
