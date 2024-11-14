@@ -7,6 +7,12 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "mfussenegger/nvim-dap",
     "nvim-neotest/neotest-python",
+    {
+      "fredrikaverpil/neotest-golang",
+      dependencies = {
+        "leoluz/nvim-dap-go",
+      },
+    },
   },
   config = function()
     require("neotest").setup({
@@ -15,6 +21,7 @@ return {
           -- shitcode warning
           python = vim.fn.trim(vim.fn.system("poetry env info -p 2> /dev/null")) .. "/bin/python",
         }),
+        require("neotest-golang"),
       },
     })
     vim.keymap.set("n", "<leader>tt", function()
@@ -30,6 +37,10 @@ return {
     vim.keymap.set("n", "<leader>tda", function()
       -- debug all tests
       require("neotest").run.run({ vim.fn.getcwd(), strategy = "dap" })
+    end)
+    vim.keymap.set("n", "<leader>tdn", function()
+      -- debug nearest test
+      require("neotest").run.run({ suite = false, strategy = "dap" })
     end)
   end,
 }
