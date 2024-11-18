@@ -28,7 +28,7 @@ return {
     vim.keymap.set("n", "]d", function()
       vim.diagnostic.goto_next()
     end, opts)
-    vim.keymap.set("n", "<leader>vca", function()
+    vim.keymap.set("n", "<C-a>", function()
       vim.lsp.buf.code_action()
     end, opts)
     vim.keymap.set("n", "<leader>vrn", function()
