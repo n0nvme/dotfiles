@@ -28,7 +28,7 @@ return {
     vim.keymap.set("n", "]d", function()
       vim.diagnostic.goto_next()
     end, opts)
-    vim.keymap.set("n", "<C-a>", function()
+    vim.keymap.set("n", "<leader>ca", function()
       vim.lsp.buf.code_action()
     end, opts)
     vim.keymap.set("n", "<leader>vrn", function()
@@ -61,7 +61,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "ruff", "gopls", "ansiblels" },
+      ensure_installed = { "pyright", "ruff", "gopls", "ansiblels", "svelte" },
       handlers = {
         gopls = function()
           require("lspconfig").gopls.setup({})
@@ -82,6 +82,9 @@ return {
         end,
         ansiblels = function()
           require("lspconfig").ansiblels.setup({})
+        end,
+        svelte = function()
+          require("lspconfig").svelte.setup({})
         end,
       },
     })
