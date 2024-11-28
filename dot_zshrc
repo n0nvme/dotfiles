@@ -74,6 +74,9 @@ alias vim='nvim'
 alias k=kubecolor
 complete -F __start_kubectl k
 
+# Golang
+export PATH="$PATH:$HOME/go/bin"
+
 # Python
 export PATH="$PATH:$HOME/.poetry/bin"
 export PATH="$PATH:$HOME/.pyenv/bin"
