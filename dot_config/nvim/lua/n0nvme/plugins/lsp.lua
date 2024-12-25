@@ -64,7 +64,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "ruff", "gopls", "ansiblels", "svelte" },
+      ensure_installed = { "pyright", "ruff", "gopls", "ansiblels", "svelte", "markdown_oxide" },
       handlers = {
         gopls = function()
           require("lspconfig").gopls.setup({})
@@ -88,6 +88,18 @@ return {
         end,
         svelte = function()
           require("lspconfig").svelte.setup({})
+        end,
+        markdown_oxide = function()
+          local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+          require("lspconfig").markdown_oxide.setup({
+            capabilities = vim.tbl_deep_extend("force", capabilities, {
+              workspace = {
+                didChangeWatchedFiles = {
+                  dynamicRegistration = true,
+                },
+              },
+            }),
+          })
         end,
       },
     })
