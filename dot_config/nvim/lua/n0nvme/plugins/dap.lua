@@ -12,6 +12,7 @@ return {
       vim.keymap.set("n", "<F9>", function()
         dap.toggle_breakpoint()
       end, opts)
+      -- TODO: step over and step into
     end,
   },
   {
