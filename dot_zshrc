@@ -67,6 +67,8 @@ eval "$(dircolors)"
 alias ls='exa --icons'
 alias curl='curlie'
 alias docker='podman'
+alias podmani='podman run -it --entrypoint /bin/sh'
+alias dockeri='podmani'
 alias docker-compose='podman-compose'
 alias vim='nvim'
 
