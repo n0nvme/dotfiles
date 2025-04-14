@@ -10,6 +10,7 @@ dots are managed using [chezmoi](https://www.chezmoi.io/).
 - kitty
 - waybar
 - hyprland & hyprlock
+- [navi](https://github.com/denisidoro/navi)
 
 ## Scripts
 ### fetch-kubectx
