@@ -64,13 +64,13 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "ruff", "gopls", "ansiblels", "svelte", "markdown_oxide" },
+      ensure_installed = { "ruff", "gopls", "ansiblels", "svelte", "markdown_oxide", "basedpyright" },
       handlers = {
         gopls = function()
           require("lspconfig").gopls.setup({})
         end,
-        pyright = function()
-          require("lspconfig").pyright.setup({
+        basedpyright = function()
+          require("lspconfig").basedpyright.setup({
             before_init = function(_, config)
               config.settings.python.pythonPath = get_python_path(config.root_dir)
             end,
