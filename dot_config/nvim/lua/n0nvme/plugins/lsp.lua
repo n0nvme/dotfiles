@@ -34,6 +34,9 @@ return {
     vim.keymap.set("n", "<leader>ca", function()
       vim.lsp.buf.code_action()
     end, opts)
+    vim.keymap.set("v", "<leader>ca", function()
+      vim.lsp.buf.code_action()
+    end, opts)
     vim.keymap.set("n", "<leader>vrn", function()
       vim.lsp.buf.rename()
     end, opts)
@@ -64,34 +67,44 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "ruff", "gopls", "ansiblels", "svelte", "markdown_oxide", "basedpyright" },
+      ensure_installed = {
+        "ruff",
+        "gopls",
+        "ansiblels",
+        "svelte",
+        "markdown_oxide",
+        "basedpyright",
+        --"omnisharp",
+        "csharp_ls",
+        -- "jq_lsp",
+      },
       handlers = {
         gopls = function()
-          require("lspconfig").gopls.setup({})
+          vim.lsp.config.gopls.setup({})
         end,
         basedpyright = function()
-          require("lspconfig").basedpyright.setup({
+          vim.lsp.config.basedpyright.setup({
             before_init = function(_, config)
               config.settings.python.pythonPath = get_python_path(config.root_dir)
             end,
           })
         end,
         ruff = function()
-          require("lspconfig").ruff.setup({
+          vim.lsp.config.ruff.setup({
             before_init = function(_, config)
               config.settings.interpreter = get_python_path(config.root_dir)
             end,
           })
         end,
         ansiblels = function()
-          require("lspconfig").ansiblels.setup({})
+          vim.lsp.config.ansiblels.setup({})
         end,
         svelte = function()
-          require("lspconfig").svelte.setup({})
+          vim.lsp.config.svelte.setup({})
         end,
         markdown_oxide = function()
           local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-          require("lspconfig").markdown_oxide.setup({
+          vim.lsp.config.markdown_oxide.setup({
             capabilities = vim.tbl_deep_extend("force", capabilities, {
               workspace = {
                 didChangeWatchedFiles = {
@@ -103,6 +116,6 @@ return {
         end,
       },
     })
-    require("lspconfig").gleam.setup({})
+    -- vim.lsp.config.gleam.setup({})
   end,
 }
