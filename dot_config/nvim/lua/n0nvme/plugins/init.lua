@@ -1,16 +1,19 @@
 -- all small plugins that doesn't require complex settings
 return {
   {
-    "svrana/neosolarized.nvim",
-    dependencies = {
-      "tjdevries/colorbuddy.nvim",
-    },
-    config = function()
-      require("neosolarized").setup({
-        background_set = false,
-      })
-      vim.cmd("colorscheme neosolarized")
-    end,
+  "craftzdog/solarized-osaka.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+	  require("solarized-osaka").setup({
+		  transparent = true,
+		  styles = {
+			  sidebars = "transparent",
+		  },
+	  })
+	  vim.cmd("colorscheme solarized-osaka")
+  end,
   },
   {
     "stevearc/aerial.nvim",

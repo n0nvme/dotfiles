@@ -262,26 +262,29 @@ plugins {
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 //
 themes {
-    // source: https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/themes/solarized-dark.kdl
-    solarized-dark-custom {
-        fg 138 138 138
-        bg 0 43 54
-        black 7 54 66
-        red 220 50 47
-        green 133 153 0
-        yellow 181 137 0
-        blue 38 139 210
-        magenta 211 54 130
-        cyan 42 161 152
-        white 238 232 213
-        orange 203 75 22
+    // source: https://github.com/craftzdog/solarized-osaka.nvim/blob/main/extras/zellij/solarized_osaka_dark.kdl
+    solarized-osaka {
+        fg "#839395"
+        bg "#002c38"
+        // Black should match the terminal background color
+        // This ensures the top and bottom bars are transparent
+        black "#001419"
+        red "#db302d"
+        green "#849900"
+        yellow "#b28500"
+        blue "#268bd3"
+        magenta "#d23681"
+        cyan "#29a298"
+        white "#9eabac"
+        orange "#c94c16"
     }
+
 }
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "solarized-dark-custom"
+theme "solarized-osaka"
 
 // The name of the default layout to load on startup
 // Default: "default"
