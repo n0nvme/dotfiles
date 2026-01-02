@@ -1,19 +1,20 @@
 -- all small plugins that doesn't require complex settings
 return {
   {
-  "craftzdog/solarized-osaka.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-  config = function()
-	  require("solarized-osaka").setup({
-		  transparent = true,
-		  styles = {
-			  sidebars = "transparent",
-		  },
-	  })
-	  vim.cmd("colorscheme solarized-osaka")
-  end,
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require("solarized-osaka").setup({
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+      })
+      vim.cmd("colorscheme solarized-osaka")
+    end,
   },
   {
     "stevearc/aerial.nvim",
