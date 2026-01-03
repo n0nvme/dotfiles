@@ -45,9 +45,6 @@ return {
       vim.lsp.buf.signature_help()
     end, opts)
 
-    local util = require("lspconfig/util")
-    local path = util.path
-
     require("mason").setup()
     require("mason-lspconfig").setup({
       automatic_enable = true,
