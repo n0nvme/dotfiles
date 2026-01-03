@@ -5,6 +5,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
+    "gleam-lang/gleam.vim",
   },
   config = function()
     vim.keymap.set("n", "gd", function()
@@ -47,28 +48,13 @@ return {
     local util = require("lspconfig/util")
     local path = util.path
 
-    -- source https://github.com/neovim/nvim-lspconfig/issues/500#issuecomment-877293306
-    local function get_python_path(workspace)
-      -- Use activated virtualenv.
-      if vim.env.VIRTUAL_ENV then
-        return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
-      end
-
-      -- Find and use virtualenv via poetry in workspace directory.
-      local match = vim.fn.glob(path.join(workspace, "poetry.lock"))
-      if match ~= "" then
-        local venv = vim.fn.trim(vim.fn.system("poetry env info -p 2> /dev/null"))
-        return path.join(venv, "bin", "python")
-      end
-
-      -- Fallback to system Python.
-      return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
-    end
-
     require("mason").setup()
     require("mason-lspconfig").setup({
+      automatic_enable = true,
       ensure_installed = {
         "ruff",
+        "pylsp",
+        "ty",
         "gopls",
         "ansiblels",
         "svelte",
@@ -78,44 +64,56 @@ return {
         "csharp_ls",
         -- "jq_lsp",
       },
-      handlers = {
-        gopls = function()
-          vim.lsp.config.gopls.setup({})
-        end,
-        basedpyright = function()
-          vim.lsp.config.basedpyright.setup({
-            before_init = function(_, config)
-              config.settings.python.pythonPath = get_python_path(config.root_dir)
-            end,
-          })
-        end,
-        ruff = function()
-          vim.lsp.config.ruff.setup({
-            before_init = function(_, config)
-              config.settings.interpreter = get_python_path(config.root_dir)
-            end,
-          })
-        end,
-        ansiblels = function()
-          vim.lsp.config.ansiblels.setup({})
-        end,
-        svelte = function()
-          vim.lsp.config.svelte.setup({})
-        end,
-        markdown_oxide = function()
-          local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-          vim.lsp.config.markdown_oxide.setup({
-            capabilities = vim.tbl_deep_extend("force", capabilities, {
-              workspace = {
-                didChangeWatchedFiles = {
-                  dynamicRegistration = true,
-                },
-              },
-            }),
-          })
-        end,
+    })
+
+    local python_utils = require("functions.python")
+    local python_path = python_utils.get_python_path()
+    vim.lsp.config("basedpyright", {
+      settings = {
+        python = {
+          pythonPath = python_path,
+        },
+        basedpyright = {
+          analysis = {
+            diagnosticMode = "workspace",
+            typeCheckingMode = "strict",
+          },
+        },
       },
     })
-    -- vim.lsp.config.gleam.setup({})
+    vim.lsp.config("ty", {
+      settings = {
+        ty = {
+          -- https://github.com/astral-sh/ty/issues/2032
+          -- interpreter = python_path,
+          inlayHints = {
+            variableTypes = true,
+            callArgumentNames = true,
+          },
+          completions = {
+            autoImport = true,
+          },
+          disableLanguageServices = true,
+        },
+      },
+    })
+    vim.lsp.config("ruff", {
+      settings = {
+        ruff = {
+          configurationPreference = "filesystemFirst",
+        },
+      },
+    })
+    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    vim.lsp.config("markdown_oxide", {
+      capabilities = vim.tbl_deep_extend("force", capabilities, {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      }),
+    })
+    vim.lsp.enable("gleam")
   end,
 }
