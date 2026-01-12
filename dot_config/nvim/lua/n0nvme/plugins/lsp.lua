@@ -50,7 +50,6 @@ return {
       automatic_enable = true,
       ensure_installed = {
         "ruff",
-        "pylsp",
         "ty",
         "gopls",
         "ansiblels",
