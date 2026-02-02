@@ -1,0 +1,10 @@
+/* vim: set syntax=navi : */
+% kube
+
+# add imagepullsecret
+ k create secret docker-registry <secret-name> \
+  --docker-server=<registry-server> \
+  --docker-username=<username> \
+  --docker-password=<password> \
+  --namespace=<namespace>
+
