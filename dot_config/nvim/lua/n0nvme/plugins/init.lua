@@ -74,6 +74,19 @@ return {
     ---@type render.md.UserConfig
     opts = {},
   },
+  {
+    "allaman/kustomize.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      -- (optional for better directory handling in "List resources")
+      "nvim-neo-tree/neo-tree.nvim",
+      "L3MON4D3/LuaSnip",
+    },
+    ft = "yaml",
+    opts = {
+      enable_lua_snip = true,
+    },
+  },
   "gleam-lang/gleam.vim",
   "dstein64/vim-startuptime",
 }
