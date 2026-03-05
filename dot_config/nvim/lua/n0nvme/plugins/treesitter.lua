@@ -17,6 +17,7 @@ return {
           "hyprlang",
           "helm",
           "gotmpl",
+          "nickel",
         },
 
         sync_install = false,
@@ -38,6 +39,11 @@ return {
           [".*/templates/.*%.tpl"] = "helm",
           [".*/templates/.*%.tmpl.html"] = "helm",
           [".*/templates/.*%.ya?ml"] = "helm",
+        },
+      })
+      vim.filetype.add({
+        extension = {
+          ncl = "nickel",
         },
       })
     end,
