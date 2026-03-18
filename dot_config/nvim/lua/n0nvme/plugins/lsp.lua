@@ -48,7 +48,17 @@ return {
       vim.lsp.buf.signature_help()
     end, opts)
 
-    require("mason").setup()
+    require("mason").setup({})
+    ensure_installed = {
+      "prettierd",
+    }
+    mason_registry = require("mason-registry")
+    for _, tool in ipairs(ensure_installed) do
+      local p = mason_registry.get_package(tool)
+      if not p:is_installed() then
+        p:install()
+      end
+    end
     require("mason-lspconfig").setup({
       automatic_enable = true,
       ensure_installed = {
@@ -61,6 +71,8 @@ return {
         "basedpyright",
         --"omnisharp",
         "csharp_ls",
+        "ts_ls",
+        "vue_ls",
         -- "jq_lsp",
       },
     })
@@ -112,6 +124,23 @@ return {
           },
         },
       }),
+    })
+
+    local vue_language_server_path = vim.fn.stdpath("data")
+      .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+    vue_plugin = {
+      name = "@vue/typescript-plugin",
+      location = vue_language_server_path,
+      languages = { "vue" },
+      configNamespace = "typescript",
+    }
+    vim.lsp.config("ts_ls", {
+      init_options = {
+        plugins = {
+          vue_plugin,
+        },
+      },
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     })
     vim.lsp.enable("gleam")
   end,
