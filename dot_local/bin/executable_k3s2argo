@@ -1,0 +1,12 @@
+#!/usr/bin/zsh
+
+echo -n "where to connect?: "
+read HOST
+echo -n "sudo password:"
+read -s SUDO_PASS
+echo -n "\ncluster name: "
+read NAME
+
+fetch-kubectx_args --host "$HOST" --sudo-pass "$SUDO_PASS" --name "$NAME"
+
+argocd cluster add ${NAME} --name ${NAME}

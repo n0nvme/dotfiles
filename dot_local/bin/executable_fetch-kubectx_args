@@ -1,0 +1,38 @@
+#!/usr/bin/zsh
+
+HOST=""
+SUDO_PASS=""
+NAME=""
+
+while [[ "$1" == --* ]]; do
+  case "$1" in
+    --host|-h) HOST="$2"; shift 2 ;;
+    --sudo-pass|-p) SUDO_PASS="$2"; shift 2 ;;
+    --name|-n) NAME="$2"; shift 2 ;;
+    *) echo "Unknown option: $1"; exit 1 ;;
+  esac
+done
+
+if [ -z "$HOST" ] || [ -z "$NAME" ]; then
+  echo "Usage: $0 --host <host> --sudo-pass <pass> --name <name>"
+  exit 1
+fi
+
+ADDR=${HOST#*@}
+
+if [ -n "$SUDO_PASS" ]; then
+  CFG=$(echo $SUDO_PASS | ssh -tt $HOST "sudo -S cat /etc/rancher/k3s/k3s.yaml")
+else
+  CFG=$(ssh -tt $HOST "sudo cat /etc/rancher/k3s/k3s.yaml")
+fi
+echo ""
+echo $CFG | tail -n +2
+echo $CFG | \
+  tail -n +2 | \
+  yq -y "
+  .clusters[0].cluster.server = \"https://${ADDR}:6443\" |
+  .clusters[0].name = \"${NAME}\" |
+  .users[0].name = \"${NAME}\" |
+  .contexts[0].context.cluster = \"${NAME}\" | .contexts[0].context.user = \"${NAME}\"
+  " | \
+  kubecm add --context-name ${NAME} -c -f -
