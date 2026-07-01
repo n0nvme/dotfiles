@@ -12,7 +12,7 @@ echo ""
 echo $CFG | tail -n +3
 echo $CFG | \
   tail -n +3 | \
-  yq -y "
+  yq "
   .clusters[0].cluster.server = \"https://$ADDR:6443\" |
   .clusters[0].name = \"$NAME\" |
   .users[0].name = \"$NAME\" |
